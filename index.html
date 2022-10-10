@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The onscroll Event</h1>
+    <p>Try the scrollbar in div.</p>
+
+    <div onscroll="myFunction()" id="container">
+
+    </div>
+
+    <script>
+    let x = 0;
+    var main = document.getElementById("container")
+    async function getData(){
+        let response = await fetch("blog.json");
+        let data = await response.json();
+        for(let i=0; i<data.users.length; i++){
+            let item = document.createElement("span");
+            let item1 = document.createElement("p");
+            item.innerHTML = data.users[i].name + "<br>";
+            item1.innerHTML = data.users[i].blog;
+            console.log(data.users[i].name)
+            main.append(item);
+            main.append(item1);
+
+        }
+    }
+    function myFunction() {
+      document.getElementById("demo").innerHTML = x += 1;
+    }
+    getData()
+    </script>
+</body>
+</html>
